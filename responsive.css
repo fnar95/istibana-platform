@@ -1,0 +1,331 @@
+/* =====================================================
+   responsive.css
+   تحسينات عامة للجوال والتابلت
+===================================================== */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+canvas,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+* {
+  overflow-wrap: break-word;
+}
+
+/* =====================================================
+   1024px
+===================================================== */
+
+@media (max-width: 1024px) {
+
+  .admin-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stats-grid,
+  .dashboard-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .surveys-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+  }
+
+}
+
+/* =====================================================
+   768px
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .app-container,
+  .admin-page,
+  .results-page,
+  .survey-page {
+    width: calc(100% - 20px) !important;
+  }
+
+  .top-header,
+  .admin-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .header-actions {
+    width: 100% !important;
+  }
+
+  .header-btn {
+    flex: 1 1 auto !important;
+  }
+
+  .stats-grid,
+  .dashboard-grid,
+  .surveys-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .survey-item-top,
+  .question-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .survey-actions {
+    width: 100%;
+  }
+
+  .small-btn {
+    flex: 1 1 calc(50% - 8px);
+    text-align: center;
+  }
+
+  .no-surveys-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .no-surveys-content {
+    order: 1 !important;
+  }
+
+  .no-surveys-person {
+    order: 2 !important;
+  }
+
+  .text-responses {
+    grid-template-columns: 1fr !important;
+  }
+
+  .rating-summary {
+    grid-template-columns: 1fr !important;
+  }
+
+}
+
+/* =====================================================
+   600px
+===================================================== */
+
+@media (max-width: 600px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  .floating-buttons {
+    left: 10px !important;
+    top: 10px !important;
+    gap: 8px !important;
+  }
+
+  .floating-btn {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .hero h1 {
+    font-size: 28px !important;
+  }
+
+  .survey-hero,
+  .panel,
+  .results-panel,
+  .stat-card {
+    border-radius: 16px !important;
+  }
+
+  .survey-hero {
+    padding: 22px 17px !important;
+  }
+
+  .panel,
+  .results-panel {
+    padding: 16px !important;
+  }
+
+  .question-card,
+  .result-question,
+  .survey-item {
+    padding: 14px !important;
+  }
+
+  .survey-actions {
+    display: grid !important;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .small-btn {
+    width: 100% !important;
+  }
+
+  .option-info {
+    align-items: flex-start !important;
+  }
+
+  .option-stats {
+    flex-direction: column;
+    gap: 3px !important;
+  }
+
+  .qr-box {
+    width: min(220px, 100%) !important;
+    min-height: auto !important;
+  }
+
+  .edit-modal {
+    padding: 10px !important;
+  }
+
+  .edit-modal-card,
+  .modal-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 18px !important;
+  }
+
+  .person-image {
+    width: 92% !important;
+    max-height: 300px !important;
+  }
+
+  .no-surveys-person {
+    min-height: 280px !important;
+  }
+
+}
+
+/* =====================================================
+   430px
+===================================================== */
+
+@media (max-width: 430px) {
+
+  .app-container,
+  .admin-page,
+  .results-page,
+  .survey-page {
+    width: calc(100% - 14px) !important;
+  }
+
+  .header-title {
+    align-items: flex-start !important;
+  }
+
+  .header-icon,
+  .admin-logo {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .header-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .live-badge {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+
+  .survey-actions {
+    grid-template-columns: 1fr !important;
+  }
+
+  .rating-row {
+    justify-content: center;
+  }
+
+  .rating-option {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .question-title-row {
+    gap: 8px !important;
+  }
+
+  .question-number {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .closed-screen {
+    padding: 35px 15px !important;
+  }
+
+  .closed-screen h2 {
+    font-size: 27px !important;
+  }
+
+  .home-btn {
+    width: 100% !important;
+  }
+
+}
+
+/* =====================================================
+   375px
+===================================================== */
+
+@media (max-width: 375px) {
+
+  .hero h1 {
+    font-size: 25px !important;
+  }
+
+  .badge,
+  .platform-badge {
+    font-size: 9px !important;
+  }
+
+  .header-actions {
+    grid-template-columns: 1fr !important;
+  }
+
+  .header-btn,
+  .export-btn {
+    width: 100% !important;
+  }
+
+  .stat-card strong {
+    font-size: 24px !important;
+  }
+
+  .question-title-wrap h3 {
+    font-size: 12px !important;
+  }
+
+  .option-info {
+    flex-direction: column !important;
+    gap: 5px !important;
+  }
+
+  .option-stats {
+    flex-direction: row !important;
+  }
+
+  .person-image {
+    max-height: 260px !important;
+  }
+
+}

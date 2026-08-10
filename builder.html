@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#6366f1"
+  >
+
+  <title>
+    تصميم الاستبانة | منصة الاستبانات
+  </title>
+
+
+  <!-- خط Cairo -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <style>
+
+    /* ========================================
+       إعدادات عامة
+    ======================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      min-height: 100vh;
+
+      font-family:
+        "Cairo",
+        sans-serif;
+
+      color: #292a3d;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f8f8ff,
+          #f3f5ff
+        );
+
+    }
+
+
+    button,
+    input,
+    textarea,
+    select {
+
+      font-family:
+        "Cairo",
+        sans-serif;
+
+    }
+
+
+    /* ========================================
+       الخلفية
+    ======================================== */
+
+    .background {
+
+      position: fixed;
+
+      inset: 0;
+
+      overflow: hidden;
+
+      z-index: -1;
+
+    }
+
+
+    .blob {
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      filter: blur(100px);
+
+      opacity: 0.23;
+
+    }
+
+
+    .blob-1 {
+
+      width: 450px;
+      height: 450px;
+
+      background: #8b5cf6;
+
+      top: -170px;
+      right: -120px;
+
+    }
+
+
+    .blob-2 {
+
+      width: 500px;
+      height: 500px;
+
+      background: #60a5fa;
+
+      bottom: -220px;
+      left: -180px;
+
+    }
+
+
+    .blob-3 {
+
+      width: 320px;
+      height: 320px;
+
+      background: #ec4899;
+
+      top: 40%;
+      left: 40%;
+
+    }
+
+
+    /* ========================================
+       الصفحة
+    ======================================== */
+
+    .builder-page {
+
+      width:
+        min(
+          1180px,
+          calc(100% - 30px)
+        );
+
+      margin: auto;
+
+      padding:
+        30px
+        0
+        60px;
+
+    }
+
+
+    /* ========================================
+       الرأس
+    ======================================== */
+
+    .builder-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 20px;
+
+      margin-bottom: 24px;
+
+    }
+
+
+    .header-title {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+    }
+
+
+    .header-icon {
+
+      width: 56px;
+
+      height: 56px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      flex-shrink: 0;
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1,
+          #9333ea
+        );
+
+      color: white;
+
+      font-size: 26px;
+
+      box-shadow:
+        0
+        12px
+        25px
+        rgba(
+          99,
+          102,
+          241,
+          0.25
+        );
+
+    }
+
+
+    .header-title h1 {
+
+      font-size:
+        clamp(
+          23px,
+          4vw,
+          31px
+        );
+
+      font-weight: 900;
+
+    }
+
+
+    .header-title p {
+
+      margin-top: 3px;
+
+      color: #8f92a5;
+
+      font-size: 13px;
+
+    }
+
+
+    .header-actions {
+
+      display: flex;
+
+      gap: 9px;
+
+      flex-wrap: wrap;
+
+    }
+
+
+    .header-btn {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      text-decoration: none;
+
+      border:
+        1px solid
+        #e7e7ef;
+
+      background: white;
+
+      color: #55576a;
+
+      padding:
+        10px
+        15px;
+
+      border-radius: 11px;
+
+      cursor: pointer;
+
+      font-weight: 800;
+
+      font-size: 12px;
+
+      transition: 0.2s;
+
+      box-shadow:
+        0
+        5px
+        15px
+        rgba(
+          40,
+          40,
+          70,
+          0.05
+        );
+
+    }
+
+
+    .header-btn:hover {
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .preview-btn {
+
+      background: #eef2ff;
+
+      border-color: #e0e7ff;
+
+      color: #4f46e5;
+
+    }
+
+
+    /* ========================================
+       معلومات الاستبانة
+    ======================================== */
+
+    .survey-info-card {
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(
+            99,
+            102,
+            241,
+            0.98
+          ),
+          rgba(
+            139,
+            92,
+            246,
+            0.96
+          )
+        );
+
+      color: white;
+
+      border-radius: 22px;
+
+      padding:
+        27px
+        28px;
+
+      margin-bottom: 22px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      box-shadow:
+        0
+        15px
+        35px
+        rgba(
+          99,
+          102,
+          241,
+          0.22
+        );
+
+    }
+
+
+    .survey-info-card::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 200px;
+
+      height: 200px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.1
+        );
+
+      left: -60px;
+
+      top: -80px;
+
+    }
+
+
+    .survey-badge {
+
+      display: inline-block;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.16
+        );
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          0.2
+        );
+
+      padding:
+        5px
+        11px;
+
+      border-radius: 50px;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .survey-info-card h2 {
+
+      font-size:
+        clamp(
+          21px,
+          4vw,
+          28px
+        );
+
+      font-weight: 900;
+
+      margin-bottom: 7px;
+
+      position: relative;
+
+      z-index: 1;
+
+    }
+
+
+    .survey-info-card p {
+
+      opacity: 0.88;
+
+      line-height: 1.8;
+
+      font-size: 13px;
+
+      position: relative;
+
+      z-index: 1;
+
+    }
+
+
+    /* ========================================
+       التخطيط
+    ======================================== */
+
+    .builder-layout {
+
+      display: grid;
+
+      grid-template-columns:
+        285px
+        1fr;
+
+      gap: 20px;
+
+      align-items: start;
+
+    }
+
+
+    /* ========================================
+       لوحة أنواع الأسئلة
+    ======================================== */
+
+    .question-tools {
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.95
+        );
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          0.9
+        );
+
+      border-radius: 20px;
+
+      padding: 19px;
+
+      box-shadow:
+        0
+        10px
+        30px
+        rgba(
+          55,
+          55,
+          90,
+          0.07
+        );
+
+      position: sticky;
+
+      top: 20px;
+
+    }
+
+
+    .question-tools h3 {
+
+      font-size: 17px;
+
+      font-weight: 900;
+
+      margin-bottom: 4px;
+
+    }
+
+
+    .tools-description {
+
+      color: #999bad;
+
+      font-size: 11px;
+
+      margin-bottom: 16px;
+
+      line-height: 1.7;
+
+    }
+
+
+    .question-type-list {
+
+      display: grid;
+
+      gap: 8px;
+
+    }
+
+
+    .question-type-btn {
+
+      width: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      border:
+        1px solid
+        #e9e9f1;
+
+      background: white;
+
+      border-radius: 12px;
+
+      padding:
+        11px
+        12px;
+
+      cursor: pointer;
+
+      text-align: right;
+
+      transition: 0.2s;
+
+      color: #444659;
+
+    }
+
+
+    .question-type-btn:hover {
+
+      border-color: #cfcafb;
+
+      background: #fafaff;
+
+      transform:
+        translateX(-2px);
+
+    }
+
+
+    .type-icon {
+
+      width: 37px;
+
+      height: 37px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 10px;
+
+      background: #f0edff;
+
+      font-size: 17px;
+
+    }
+
+
+    .question-type-btn strong {
+
+      display: block;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+    }
+
+
+    .question-type-btn span {
+
+      display: block;
+
+      font-size: 9px;
+
+      color: #a1a3b2;
+
+      margin-top: 2px;
+
+    }
+
+
+    /* ========================================
+       منطقة الأسئلة
+    ======================================== */
+
+    .questions-panel {
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.94
+        );
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          0.9
+        );
+
+      border-radius: 20px;
+
+      padding: 22px;
+
+      box-shadow:
+        0
+        10px
+        30px
+        rgba(
+          55,
+          55,
+          90,
+          0.07
+        );
+
+      min-height: 460px;
+
+    }
+
+
+    .questions-panel-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .questions-panel-header h3 {
+
+      font-size: 19px;
+
+      font-weight: 900;
+
+    }
+
+
+    .questions-count {
+
+      background: #eef2ff;
+
+      color: #4f46e5;
+
+      padding:
+        5px
+        10px;
+
+      border-radius: 50px;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+    }
+
+
+    /* ========================================
+       السؤال
+    ======================================== */
+
+    .question-card {
+
+      border:
+        1px solid
+        #e8e8f1;
+
+      border-radius: 16px;
+
+      padding: 18px;
+
+      margin-bottom: 14px;
+
+      background: white;
+
+      position: relative;
+
+      transition: 0.2s;
+
+    }
+
+
+    .question-card:hover {
+
+      border-color: #cbc7fb;
+
+      box-shadow:
+        0
+        8px
+        20px
+        rgba(
+          99,
+          102,
+          241,
+          0.07
+        );
+
+    }
+
+
+    .question-number {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-width: 28px;
+
+      height: 28px;
+
+      padding:
+        0
+        8px;
+
+      border-radius: 9px;
+
+      background: #6d5dfc;
+
+      color: white;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .question-row {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        180px;
+
+      gap: 10px;
+
+      margin-bottom: 13px;
+
+    }
+
+
+    .field-input {
+
+      width: 100%;
+
+      border:
+        1.5px solid
+        #e5e5ee;
+
+      background: white;
+
+      color: #333448;
+
+      padding:
+        12px
+        13px;
+
+      border-radius: 10px;
+
+      outline: none;
+
+      font-size: 12px;
+
+      transition: 0.2s;
+
+    }
+
+
+    .field-input:focus {
+
+      border-color: #7165f5;
+
+      box-shadow:
+        0
+        0
+        0
+        4px
+        rgba(
+          113,
+          101,
+          245,
+          0.08
+        );
+
+    }
+
+
+    select.field-input {
+
+      cursor: pointer;
+
+    }
+
+
+    /* ========================================
+       الخيارات
+    ======================================== */
+
+    .options-container {
+
+      display: grid;
+
+      gap: 8px;
+
+      margin:
+        7px
+        0
+        13px;
+
+    }
+
+
+    .option-row {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+    }
+
+
+    .option-symbol {
+
+      width: 23px;
+
+      flex-shrink: 0;
+
+      color: #8b8da0;
+
+      text-align: center;
+
+      font-size: 15px;
+
+    }
+
+
+    .option-input {
+
+      flex: 1;
+
+      border: none;
+
+      border-bottom:
+        1px solid
+        #e5e5ee;
+
+      outline: none;
+
+      padding:
+        8px
+        5px;
+
+      color: #4b4d60;
+
+      font-size: 12px;
+
+    }
+
+
+    .option-input:focus {
+
+      border-bottom-color: #7165f5;
+
+    }
+
+
+    .remove-option-btn {
+
+      border: none;
+
+      background: transparent;
+
+      cursor: pointer;
+
+      color: #b1b3c1;
+
+      font-size: 17px;
+
+    }
+
+
+    .remove-option-btn:hover {
+
+      color: #ef4444;
+
+    }
+
+
+    .add-option-btn {
+
+      border: none;
+
+      background: transparent;
+
+      color: #6366f1;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      font-size: 11px;
+
+      margin-top: 3px;
+
+    }
+
+
+    /* ========================================
+       أسفل بطاقة السؤال
+    ======================================== */
+
+    .question-footer {
+
+      border-top:
+        1px solid
+        #f0f0f5;
+
+      padding-top: 12px;
+
+      margin-top: 12px;
+
+      display: flex;
+
+      justify-content: flex-end;
+
+      align-items: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+    }
+
+
+    .required-control {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      font-size: 11px;
+
+      color: #646679;
+
+      font-weight: 700;
+
+    }
+
+
+    .required-control input {
+
+      accent-color: #6366f1;
+
+    }
+
+
+    .icon-btn {
+
+      width: 34px;
+
+      height: 34px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      border: none;
+
+      border-radius: 9px;
+
+      cursor: pointer;
+
+      background: #f5f5fa;
+
+      font-size: 15px;
+
+      transition: 0.2s;
+
+    }
+
+
+    .icon-btn:hover {
+
+      background: #eeeeff;
+
+    }
+
+
+    .delete-question-btn:hover {
+
+      background: #fee2e2;
+
+    }
+
+
+    /* ========================================
+       الحالة الفارغة
+    ======================================== */
+
+    .empty-state {
+
+      min-height: 360px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      color: #999cad;
+
+      border:
+        2px dashed
+        #e7e7f0;
+
+      border-radius: 16px;
+
+      padding: 30px;
+
+    }
+
+
+    .empty-icon {
+
+      width: 75px;
+
+      height: 75px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 22px;
+
+      background: #f1efff;
+
+      font-size: 33px;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .empty-state h4 {
+
+      color: #56586b;
+
+      font-size: 16px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .empty-state p {
+
+      font-size: 11px;
+
+      line-height: 1.8;
+
+      max-width: 330px;
+
+    }
+
+
+    /* ========================================
+       شريط الحفظ
+    ======================================== */
+
+    .save-bar {
+
+      position: sticky;
+
+      bottom: 15px;
+
+      margin-top: 20px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      background:
+        rgba(
+          36,
+          37,
+          58,
+          0.95
+        );
+
+      backdrop-filter: blur(15px);
+
+      color: white;
+
+      padding:
+        13px
+        16px;
+
+      border-radius: 15px;
+
+      box-shadow:
+        0
+        15px
+        35px
+        rgba(
+          25,
+          25,
+          40,
+          0.2
+        );
+
+      z-index: 20;
+
+    }
+
+
+    .save-status {
+
+      font-size: 11px;
+
+      color: #d9dae2;
+
+    }
+
+
+    .save-btn {
+
+      border: none;
+
+      cursor: pointer;
+
+      padding:
+        10px
+        20px;
+
+      border-radius: 10px;
+
+      color: white;
+
+      font-weight: 900;
+
+      font-size: 12px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+    }
+
+
+    .save-btn:disabled {
+
+      opacity: 0.6;
+
+      cursor: wait;
+
+    }
+
+
+    /* ========================================
+       Toast
+    ======================================== */
+
+    #toast {
+
+      position: fixed;
+
+      bottom: 25px;
+
+      left: 50%;
+
+      transform:
+        translateX(-50%)
+        translateY(30px);
+
+      background: #292a40;
+
+      color: white;
+
+      padding:
+        12px
+        20px;
+
+      border-radius: 11px;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: 0.3s;
+
+      z-index: 3000;
+
+      font-size: 11px;
+
+      box-shadow:
+        0
+        10px
+        25px
+        rgba(
+          0,
+          0,
+          0,
+          0.15
+        );
+
+    }
+
+
+    #toast.show {
+
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        translateY(0);
+
+    }
+
+
+    /* ========================================
+       Responsive
+    ======================================== */
+
+    @media
+    (max-width: 900px) {
+
+      .builder-layout {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .question-tools {
+
+        position: static;
+
+      }
+
+
+      .question-type-list {
+
+        grid-template-columns:
+          repeat(
+            2,
+            1fr
+          );
+
+      }
+
+    }
+
+
+    @media
+    (max-width: 650px) {
+
+      .builder-header {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+      }
+
+
+      .header-actions {
+
+        width: 100%;
+
+      }
+
+
+      .header-btn {
+
+        flex: 1;
+
+      }
+
+
+      .question-row {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .question-type-list {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .save-bar {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+      }
+
+
+      .save-btn {
+
+        width: 100%;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- الخلفية -->
+
+  <div
+    class="background"
+    aria-hidden="true"
+  >
+
+    <div
+      class="blob blob-1"
+    ></div>
+
+    <div
+      class="blob blob-2"
+    ></div>
+
+    <div
+      class="blob blob-3"
+    ></div>
+
+  </div>
+
+
+
+  <main class="builder-page">
+
+
+    <!-- ===================================
+         الرأس
+    ==================================== -->
+
+    <header class="builder-header">
+
+
+      <div class="header-title">
+
+        <div class="header-icon">
+          🧩
+        </div>
+
+
+        <div>
+
+          <h1>
+            محرر الأسئلة
+          </h1>
+
+          <p>
+            صمّم الاستبانة وأضف الأسئلة التي تريدها
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="header-actions">
+
+
+        <a
+          href="admin.html"
+          class="header-btn"
+        >
+          ← لوحة الإدارة
+        </a>
+
+
+        <button
+          id="previewBtn"
+          class="header-btn preview-btn"
+          type="button"
+        >
+          👁️ معاينة الاستبانة
+        </button>
+
+
+      </div>
+
+    </header>
+
+
+
+    <!-- ===================================
+         معلومات الاستبانة
+    ==================================== -->
+
+    <section class="survey-info-card">
+
+
+      <span class="survey-badge">
+        📋 الاستبانة الحالية
+      </span>
+
+
+      <h2 id="surveyTitleDisplay">
+        جاري تحميل الاستبانة...
+      </h2>
+
+
+      <p id="surveyDescriptionDisplay">
+
+        يرجى الانتظار أثناء جلب البيانات
+        من Firebase.
+
+      </p>
+
+
+    </section>
+
+
+
+    <!-- ===================================
+         منطقة التصميم
+    ==================================== -->
+
+    <section class="builder-layout">
+
+
+      <!-- ===============================
+           أدوات إضافة الأسئلة
+      ================================ -->
+
+      <aside class="question-tools">
+
+
+        <h3>
+          إضافة سؤال
+        </h3>
+
+
+        <p class="tools-description">
+
+          اختر نوع السؤال الذي ترغب
+          بإضافته إلى الاستبانة.
+
+        </p>
+
+
+
+        <div class="question-type-list">
+
+
+          <button
+            class="question-type-btn"
+            type="button"
+            data-question-type="radio"
+          >
+
+            <div class="type-icon">
+              ◉
+            </div>
+
+            <div>
+
+              <strong>
+                اختيار واحد
+              </strong>
+
+              <span>
+                إجابة واحدة من عدة خيارات
+              </span>
+
+            </div>
+
+          </button>
+
+
+
+          <button
+            class="question-type-btn"
+            type="button"
+            data-question-type="checkbox"
+          >
+
+            <div class="type-icon">
+              ☑️
+            </div>
+
+            <div>
+
+              <strong>
+                اختيار متعدد
+              </strong>
+
+              <span>
+                أكثر من إجابة
+              </span>
+
+            </div>
+
+          </button>
+
+
+
+          <button
+            class="question-type-btn"
+            type="button"
+            data-question-type="short-text"
+          >
+
+            <div class="type-icon">
+              ✏️
+            </div>
+
+            <div>
+
+              <strong>
+                إجابة قصيرة
+              </strong>
+
+              <span>
+                نص قصير أو اسم
+              </span>
+
+            </div>
+
+          </button>
+
+
+
+          <button
+            class="question-type-btn"
+            type="button"
+            data-question-type="long-text"
+          >
+
+            <div class="type-icon">
+              📝
+            </div>
+
+            <div>
+
+              <strong>
+                إجابة طويلة
+              </strong>
+
+              <span>
+                رأي أو تعليق مطول
+              </span>
+
+            </div>
+
+          </button>
+
+
+
+          <button
+            class="question-type-btn"
+            type="button"
+            data-question-type="yes-no"
+          >
+
+            <div class="type-icon">
+              👍
+            </div>
+
+            <div>
+
+              <strong>
+                نعم / لا
+              </strong>
+
+              <span>
+                إجابة ثنائية سريعة
+              </span>
+
+            </div>
+
+          </button>
+
+
+
+          <button
+            class="question-type-btn"
+            type="button"
+            data-question-type="rating"
+          >
+
+            <div class="type-icon">
+              ⭐
+            </div>
+
+            <div>
+
+              <strong>
+                مقياس تقييم
+              </strong>
+
+              <span>
+                تقييم من 1 إلى 5
+              </span>
+
+            </div>
+
+          </button>
+
+
+        </div>
+
+
+      </aside>
+
+
+
+      <!-- ===============================
+           قائمة الأسئلة
+      ================================ -->
+
+      <section class="questions-panel">
+
+
+        <div class="questions-panel-header">
+
+
+          <h3>
+            أسئلة الاستبانة
+          </h3>
+
+
+          <span
+            id="questionsCount"
+            class="questions-count"
+          >
+            0 سؤال
+          </span>
+
+
+        </div>
+
+
+
+        <div id="questionsContainer">
+
+
+          <div
+            id="emptyQuestionsState"
+            class="empty-state"
+          >
+
+
+            <div class="empty-icon">
+              ❓
+            </div>
+
+
+            <h4>
+              لم تضف أي سؤال بعد
+            </h4>
+
+
+            <p>
+
+              اختر نوع السؤال من القائمة
+              لإضافة أول سؤال إلى الاستبانة.
+
+            </p>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- ===============================
+             شريط الحفظ
+        ================================ -->
+
+        <div class="save-bar">
+
+
+          <div>
+
+            <strong>
+              💾 حفظ التغييرات
+            </strong>
+
+            <div
+              id="saveStatus"
+              class="save-status"
+            >
+              لم يتم إجراء تغييرات بعد
+            </div>
+
+          </div>
+
+
+          <button
+            id="saveQuestionsBtn"
+            class="save-btn"
+            type="button"
+          >
+            حفظ الأسئلة
+          </button>
+
+
+        </div>
+
+
+      </section>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- التنبيهات -->
+
+  <div id="toast"></div>
+
+
+
+  <!-- JavaScript -->
+
+  <script
+    type="module"
+    src="builder.js"
+  ></script>
+
+
+</body>
+
+</html>

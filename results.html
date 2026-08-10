@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#6366f1"
+  >
+
+  <meta
+    name="description"
+    content="نتائج الاستبانة وتحليل المشاركات"
+  >
+
+  <title>
+    نتائج الاستبانة | منصة الاستبانات
+  </title>
+
+
+  <!-- خط Cairo -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      min-height: 100vh;
+
+      font-family:
+        "Cairo",
+        sans-serif;
+
+      color: #292a3d;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f8f8ff 0%,
+          #f4f5ff 55%,
+          #faf5ff 100%
+        );
+
+      overflow-x: hidden;
+
+    }
+
+
+    button {
+      font-family: "Cairo", sans-serif;
+    }
+
+
+    /* ==========================================
+       الخلفية
+    ========================================== */
+
+    .background {
+
+      position: fixed;
+
+      inset: 0;
+
+      overflow: hidden;
+
+      pointer-events: none;
+
+      z-index: -1;
+
+    }
+
+
+    .blob {
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      filter: blur(110px);
+
+      opacity: 0.17;
+
+    }
+
+
+    .blob-one {
+
+      width: 470px;
+      height: 470px;
+
+      top: -190px;
+      right: -120px;
+
+      background: #8b5cf6;
+
+    }
+
+
+    .blob-two {
+
+      width: 500px;
+      height: 500px;
+
+      left: -170px;
+      bottom: -210px;
+
+      background: #60a5fa;
+
+    }
+
+
+    .blob-three {
+
+      width: 350px;
+      height: 350px;
+
+      top: 38%;
+      left: 35%;
+
+      background: #ec4899;
+
+      opacity: 0.10;
+
+    }
+
+
+    /* ==========================================
+       حماية النتائج
+    ========================================== */
+
+    .auth-guard {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 99999;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      text-align: center;
+
+      padding: 25px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f8f8ff,
+          #f4f3ff
+        );
+
+      transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+
+    }
+
+
+    .auth-guard.hidden {
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      pointer-events: none;
+
+    }
+
+
+    .guard-icon {
+
+      width: 72px;
+      height: 72px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+      color: white;
+
+      font-size: 30px;
+
+      box-shadow:
+        0 15px 35px
+        rgba(99, 102, 241, 0.23);
+
+    }
+
+
+    .auth-guard h2 {
+
+      font-size: 19px;
+
+      font-weight: 900;
+
+    }
+
+
+    .auth-guard p {
+
+      color: #999bad;
+
+      font-size: 11px;
+
+    }
+
+
+    .spinner {
+
+      width: 27px;
+      height: 27px;
+
+      border:
+        3px solid
+        #e5e7ff;
+
+      border-top-color:
+        #6366f1;
+
+      border-radius: 50%;
+
+      animation:
+        spin 0.75s
+        linear infinite;
+
+    }
+
+
+    @keyframes spin {
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+
+    /* ==========================================
+       الصفحة
+    ========================================== */
+
+    .results-page {
+
+      width:
+        min(
+          1180px,
+          calc(100% - 30px)
+        );
+
+      margin: auto;
+
+      padding:
+        30px 0 60px;
+
+    }
+
+
+    /* ==========================================
+       الرأس
+    ========================================== */
+
+    .top-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 18px;
+
+      margin-bottom: 22px;
+
+    }
+
+
+    .header-title {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 13px;
+
+    }
+
+
+    .header-icon {
+
+      width: 57px;
+      height: 57px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      border-radius: 18px;
+
+      color: white;
+
+      font-size: 25px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1,
+          #9333ea
+        );
+
+      box-shadow:
+        0 12px 26px
+        rgba(99, 102, 241, 0.23);
+
+    }
+
+
+    .header-title h1 {
+
+      font-size:
+        clamp(
+          24px,
+          4vw,
+          31px
+        );
+
+      font-weight: 900;
+
+    }
+
+
+    .header-title p {
+
+      color: #8f92a5;
+
+      font-size: 11px;
+
+      margin-top: 2px;
+
+    }
+
+
+    .header-actions {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      align-items: center;
+
+      gap: 8px;
+
+    }
+
+
+    .header-btn {
+
+      display: inline-flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        9px 13px;
+
+      border:
+        1px solid
+        #e7e7ef;
+
+      border-radius: 10px;
+
+      background: white;
+
+      color: #5b5d70;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      box-shadow:
+        0 5px 16px
+        rgba(40, 40, 70, 0.05);
+
+      transition: 0.2s;
+
+    }
+
+
+    .header-btn:hover {
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .export-btn {
+
+      color: white;
+
+      border-color: transparent;
+
+      background:
+        linear-gradient(
+          135deg,
+          #059669,
+          #10b981
+        );
+
+      box-shadow:
+        0 6px 18px
+        rgba(16, 185, 129, 0.20);
+
+    }
+
+
+    .export-btn:hover {
+
+      box-shadow:
+        0 9px 22px
+        rgba(16, 185, 129, 0.28);
+
+    }
+
+
+    .export-btn:disabled {
+
+      opacity: 0.60;
+
+      cursor: wait;
+
+      transform: none;
+
+    }
+
+
+    .live-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        7px 11px;
+
+      border-radius: 100px;
+
+      background: #ecfdf5;
+
+      color: #047857;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+    }
+
+
+    .live-dot {
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: #22c55e;
+
+      box-shadow:
+        0 0 0
+        4px rgba(34, 197, 94, 0.12);
+
+      animation:
+        livePulse
+        1.7s
+        infinite;
+
+    }
+
+
+    @keyframes livePulse {
+
+      50% {
+        opacity: 0.45;
+      }
+
+    }
+
+
+    /* ==========================================
+       رأس الاستبانة
+    ========================================== */
+
+    .survey-hero {
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding:
+        30px;
+
+      border-radius: 23px;
+
+      margin-bottom: 18px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+      box-shadow:
+        0 17px 40px
+        rgba(99, 102, 241, 0.22);
+
+    }
+
+
+    .survey-hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 280px;
+      height: 280px;
+
+      border-radius: 50%;
+
+      top: -155px;
+      left: -80px;
+
+      background:
+        rgba(255, 255, 255, 0.10);
+
+    }
+
+
+    .survey-hero::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 150px;
+      height: 150px;
+
+      border-radius: 50%;
+
+      right: -60px;
+      bottom: -90px;
+
+      background:
+        rgba(255, 255, 255, 0.07);
+
+    }
+
+
+    .hero-content {
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+
+    .hero-label {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      padding:
+        5px 10px;
+
+      border-radius: 100px;
+
+      background:
+        rgba(255, 255, 255, 0.14);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.17);
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      margin-bottom: 11px;
+
+    }
+
+
+    #surveyTitle {
+
+      font-size:
+        clamp(
+          23px,
+          4vw,
+          31px
+        );
+
+      font-weight: 900;
+
+      margin-bottom: 6px;
+
+    }
+
+
+    #surveyDescription {
+
+      color:
+        rgba(255, 255, 255, 0.85);
+
+      font-size: 11px;
+
+      line-height: 1.9;
+
+    }
+
+
+    /* ==========================================
+       الإحصاءات
+    ========================================== */
+
+    .stats-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 13px;
+
+      margin-bottom: 18px;
+
+    }
+
+
+    .stat-card {
+
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        rgba(255, 255, 255, 0.95);
+
+      border:
+        1px solid
+        rgba(235, 235, 244, 0.92);
+
+      border-radius: 17px;
+
+      padding: 18px;
+
+      box-shadow:
+        0 9px 27px
+        rgba(55, 55, 90, 0.06);
+
+    }
+
+
+    .stat-card::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 80px;
+      height: 80px;
+
+      border-radius: 50%;
+
+      left: -38px;
+      bottom: -40px;
+
+      background:
+        rgba(99, 102, 241, 0.035);
+
+    }
+
+
+    .stat-head {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .stat-icon {
+
+      width: 40px;
+      height: 40px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #eef2ff,
+          #f3e8ff
+        );
+
+      font-size: 18px;
+
+    }
+
+
+    .stat-live {
+
+      color: #16a34a;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+    }
+
+
+    .stat-card span {
+
+      display: block;
+
+      color: #9295a7;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      margin-bottom: 3px;
+
+    }
+
+
+    .stat-card strong {
+
+      font-size: 28px;
+
+      font-weight: 900;
+
+      color: #2e3043;
+
+    }
+
+
+    .stat-card small {
+
+      display: block;
+
+      margin-top: 3px;
+
+      color: #aaaebe;
+
+      font-size: 8px;
+
+    }
+
+
+    /* ==========================================
+       الملخص
+    ========================================== */
+
+    .analytics-summary {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      padding:
+        14px 17px;
+
+      margin-bottom: 18px;
+
+      background:
+        rgba(255, 255, 255, 0.94);
+
+      border:
+        1px solid
+        #ececf3;
+
+      border-radius: 15px;
+
+      box-shadow:
+        0 7px 22px
+        rgba(55, 55, 90, 0.04);
+
+    }
+
+
+    .summary-message {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      color: #696b7e;
+
+    }
+
+
+    .summary-icon {
+
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 10px;
+
+      background: #f4f3ff;
+
+    }
+
+
+    .last-update {
+
+      color: #a0a2b1;
+
+      font-size: 8px;
+
+      white-space: nowrap;
+
+    }
+
+
+    /* ==========================================
+       لوحة النتائج
+    ========================================== */
+
+    .results-panel {
+
+      background:
+        rgba(255, 255, 255, 0.93);
+
+      border:
+        1px solid
+        rgba(235, 235, 244, 0.90);
+
+      border-radius: 21px;
+
+      padding: 21px;
+
+      box-shadow:
+        0 10px 32px
+        rgba(55, 55, 90, 0.06);
+
+    }
+
+
+    .panel-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 18px;
+
+    }
+
+
+    .panel-title h2 {
+
+      font-size: 19px;
+
+      font-weight: 900;
+
+    }
+
+
+    .panel-title p {
+
+      color: #9a9cac;
+
+      font-size: 9px;
+
+      margin-top: 2px;
+
+    }
+
+
+    .responses-badge {
+
+      padding:
+        6px 11px;
+
+      border-radius: 100px;
+
+      color: #4f46e5;
+
+      background: #eef2ff;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+    }
+
+
+    #resultsContainer {
+
+      display: grid;
+
+      gap: 14px;
+
+    }
+
+
+    /* ==========================================
+       بطاقة السؤال
+    ========================================== */
+
+    .result-question {
+
+      position: relative;
+
+      overflow: hidden;
+
+      background: white;
+
+      border:
+        1px solid
+        #e9e9f1;
+
+      border-radius: 17px;
+
+      padding: 19px;
+
+      transition: 0.25s;
+
+    }
+
+
+    .result-question:hover {
+
+      border-color: #d4d0fb;
+
+      box-shadow:
+        0 10px 25px
+        rgba(99, 102, 241, 0.055);
+
+    }
+
+
+    .question-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+
+      gap: 15px;
+
+      margin-bottom: 17px;
+
+    }
+
+
+    .question-title-wrap {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 10px;
+
+    }
+
+
+    .question-number {
+
+      width: 31px;
+      height: 31px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 10px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      box-shadow:
+        0 5px 12px
+        rgba(99, 102, 241, 0.17);
+
+    }
+
+
+    .question-title-wrap h3 {
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+      color: #343548;
+
+      font-weight: 900;
+
+    }
+
+
+    .question-meta {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 5px;
+
+      margin-top: 4px;
+
+    }
+
+
+    .question-type {
+
+      padding:
+        3px 7px;
+
+      border-radius: 100px;
+
+      background: #f5f3ff;
+
+      color: #6d5dfc;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+    }
+
+
+    .question-required {
+
+      padding:
+        3px 7px;
+
+      border-radius: 100px;
+
+      background: #fff1f2;
+
+      color: #be123c;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+    }
+
+
+    .question-responses {
+
+      flex-shrink: 0;
+
+      padding:
+        5px 9px;
+
+      border-radius: 100px;
+
+      background: #f4f5f8;
+
+      color: #757789;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+    }
+
+
+    /* ==========================================
+       الخيارات
+    ========================================== */
+
+    .option-result {
+
+      margin-bottom: 14px;
+
+    }
+
+
+    .option-result:last-child {
+
+      margin-bottom: 0;
+
+    }
+
+
+    .option-info {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .option-label-wrap {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      min-width: 0;
+
+    }
+
+
+    .option-dot {
+
+      width: 8px;
+      height: 8px;
+
+      flex-shrink: 0;
+
+      border-radius: 50%;
+
+      background: #8b5cf6;
+
+    }
+
+
+    .option-label {
+
+      color: #535567;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      overflow-wrap: anywhere;
+
+    }
+
+
+    .option-stats {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      flex-shrink: 0;
+
+    }
+
+
+    .option-count {
+
+      color: #9295a6;
+
+      font-size: 8px;
+
+    }
+
+
+    .option-percent {
+
+      min-width: 44px;
+
+      text-align: center;
+
+      padding:
+        3px 7px;
+
+      border-radius: 7px;
+
+      background: #f3f1ff;
+
+      color: #5d4fe3;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+    }
+
+
+    .result-bar {
+
+      width: 100%;
+
+      height: 10px;
+
+      overflow: hidden;
+
+      border-radius: 100px;
+
+      background: #f0eff8;
+
+    }
+
+
+    .result-bar-fill {
+
+      width: 0%;
+
+      height: 100%;
+
+      border-radius: inherit;
+
+      background:
+        linear-gradient(
+          90deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+      transition:
+        width
+        0.75s
+        cubic-bezier(.2, .8, .2, 1);
+
+    }
+
+
+    /* ==========================================
+       التقييم
+    ========================================== */
+
+    .rating-summary {
+
+      display: grid;
+
+      grid-template-columns:
+        155px 1fr;
+
+      gap: 18px;
+
+      align-items: center;
+
+      margin-bottom: 16px;
+
+      padding: 15px;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #faf9ff,
+          #f5f3ff
+        );
+
+      border:
+        1px solid
+        #e9e4ff;
+
+    }
+
+
+    .average-rating {
+
+      text-align: center;
+
+    }
+
+
+    .average-rating strong {
+
+      display: block;
+
+      font-size: 33px;
+
+      color: #5c4ee2;
+
+      font-weight: 900;
+
+    }
+
+
+    .average-rating span {
+
+      font-size: 9px;
+
+      color: #8e90a2;
+
+    }
+
+
+    .rating-stars {
+
+      margin-top: 3px;
+
+      letter-spacing: 2px;
+
+      font-size: 14px;
+
+    }
+
+
+    .rating-description {
+
+      color: #6f7184;
+
+      font-size: 10px;
+
+      line-height: 1.8;
+
+    }
+
+
+    /* ==========================================
+       الإجابات النصية
+    ========================================== */
+
+    .text-toolbar {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .text-toolbar span {
+
+      color: #8c8e9f;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+    }
+
+
+    .text-responses {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0, 1fr)
+        );
+
+      gap: 9px;
+
+    }
+
+
+    .text-response {
+
+      position: relative;
+
+      padding:
+        13px
+        13px
+        13px
+        40px;
+
+      border-radius: 12px;
+
+      background: #f9f9fc;
+
+      border:
+        1px solid
+        #ededf4;
+
+      color: #5e6072;
+
+      font-size: 10px;
+
+      line-height: 1.9;
+
+      overflow-wrap: anywhere;
+
+    }
+
+
+    .text-response-number {
+
+      position: absolute;
+
+      left: 10px;
+      top: 10px;
+
+      width: 22px;
+      height: 22px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      border-radius: 7px;
+
+      color: #6456e8;
+
+      background: #eeecff;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+    }
+
+
+    /* ==========================================
+       لا توجد نتائج
+    ========================================== */
+
+    .no-results {
+
+      padding: 18px;
+
+      text-align: center;
+
+      border:
+        1px dashed
+        #ddddea;
+
+      border-radius: 12px;
+
+      background: #fafafd;
+
+      color: #999bac;
+
+      font-size: 9px;
+
+    }
+
+
+    .state-card {
+
+      padding:
+        52px 20px;
+
+      text-align: center;
+
+      color: #999bad;
+
+    }
+
+
+    .state-icon {
+
+      width: 70px;
+      height: 70px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      margin:
+        0 auto
+        14px;
+
+      border-radius: 21px;
+
+      background: #f0edff;
+
+      font-size: 29px;
+
+    }
+
+
+    .state-card h3 {
+
+      color: #57596c;
+
+      margin-bottom: 5px;
+
+      font-size: 16px;
+
+    }
+
+
+    .state-card p {
+
+      font-size: 9px;
+
+      line-height: 1.8;
+
+    }
+
+
+    /* ==========================================
+       تأثير مشاركة جديدة
+    ========================================== */
+
+    .new-response-flash {
+
+      animation:
+        flashResponse
+        0.7s ease;
+
+    }
+
+
+    @keyframes flashResponse {
+
+      0% {
+        transform: scale(1);
+      }
+
+      45% {
+        transform: scale(1.035);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+
+    }
+
+
+    /* ==========================================
+       Toast
+    ========================================== */
+
+    #toast {
+
+      position: fixed;
+
+      bottom: 25px;
+      left: 50%;
+
+      transform:
+        translateX(-50%)
+        translateY(30px);
+
+      z-index: 9000;
+
+      padding:
+        11px 18px;
+
+      border-radius: 11px;
+
+      background: #292a40;
+
+      color: white;
+
+      font-size: 10px;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      box-shadow:
+        0 10px 25px
+        rgba(0, 0, 0, 0.15);
+
+      transition: 0.3s;
+
+    }
+
+
+    #toast.show {
+
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        translateY(0);
+
+    }
+
+
+    /* ==========================================
+       Responsive
+    ========================================== */
+
+    @media
+    (max-width: 900px) {
+
+      .stats-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+
+      .text-responses {
+
+        grid-template-columns: 1fr;
+
+      }
+
+    }
+
+
+    @media
+    (max-width: 680px) {
+
+      .results-page {
+
+        width:
+          calc(100% - 20px);
+
+        padding-top: 20px;
+
+      }
+
+
+      .top-header {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+      }
+
+
+      .header-actions {
+
+        width: 100%;
+
+      }
+
+
+      .header-btn {
+
+        flex: 1;
+
+      }
+
+
+      .survey-hero {
+
+        padding:
+          25px 20px;
+
+      }
+
+
+      .stats-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .analytics-summary {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+      }
+
+
+      .question-header {
+
+        flex-direction: column;
+
+      }
+
+
+      .rating-summary {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .result-question {
+
+        padding: 16px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- ==========================================
+       حماية النتائج
+  =========================================== -->
+
+  <div
+    id="authGuard"
+    class="auth-guard"
+  >
+
+    <div class="guard-icon">
+      🔐
+    </div>
+
+
+    <h2>
+      التحقق من صلاحية عرض النتائج
+    </h2>
+
+
+    <p>
+      يرجى الانتظار لحظات...
+    </p>
+
+
+    <div class="spinner"></div>
+
+  </div>
+
+
+
+  <!-- ==========================================
+       الخلفية
+  =========================================== -->
+
+  <div
+    class="background"
+    aria-hidden="true"
+  >
+
+    <div class="blob blob-one"></div>
+
+    <div class="blob blob-two"></div>
+
+    <div class="blob blob-three"></div>
+
+  </div>
+
+
+
+  <main class="results-page">
+
+
+    <!-- ==========================================
+         الرأس
+    =========================================== -->
+
+    <header class="top-header">
+
+
+      <div class="header-title">
+
+        <div class="header-icon">
+          📊
+        </div>
+
+
+        <div>
+
+          <h1>
+            النتائج والتحليلات
+          </h1>
+
+          <p>
+            متابعة المشاركات وتحليل الإجابات لحظة بلحظة
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="header-actions">
+
+
+        <div class="live-badge">
+
+          <span class="live-dot"></span>
+
+          نتائج مباشرة
+
+        </div>
+
+
+        <button
+          id="exportExcelBtn"
+          class="header-btn export-btn"
+          type="button"
+        >
+          📥 تصدير Excel
+        </button>
+
+
+        <button
+          id="openSurveyBtn"
+          class="header-btn"
+          type="button"
+        >
+          👁️ فتح الاستبانة
+        </button>
+
+
+        <a
+          href="admin.html"
+          class="header-btn"
+        >
+          ⚙️ لوحة الإدارة
+        </a>
+
+
+      </div>
+
+
+    </header>
+
+
+
+    <!-- ==========================================
+         الاستبانة
+    =========================================== -->
+
+    <section class="survey-hero">
+
+      <div class="hero-content">
+
+
+        <div class="hero-label">
+          📋 نتائج الاستبانة
+        </div>
+
+
+        <h2 id="surveyTitle">
+          جاري تحميل الاستبانة...
+        </h2>
+
+
+        <p id="surveyDescription">
+          يتم الآن قراءة البيانات.
+        </p>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         الإحصاءات
+    =========================================== -->
+
+    <section class="stats-grid">
+
+
+      <article
+        id="responsesStatCard"
+        class="stat-card"
+      >
+
+        <div class="stat-head">
+
+          <div class="stat-icon">
+            👥
+          </div>
+
+          <span class="stat-live">
+            LIVE
+          </span>
+
+        </div>
+
+
+        <span>
+          عدد المشاركين
+        </span>
+
+
+        <strong id="totalResponses">
+          0
+        </strong>
+
+
+        <small>
+          مشاركة مستلمة
+        </small>
+
+      </article>
+
+
+
+      <article class="stat-card">
+
+        <div class="stat-head">
+
+          <div class="stat-icon">
+            ❓
+          </div>
+
+        </div>
+
+
+        <span>
+          عدد الأسئلة
+        </span>
+
+
+        <strong id="totalQuestions">
+          0
+        </strong>
+
+
+        <small>
+          سؤال في الاستبانة
+        </small>
+
+      </article>
+
+
+
+      <article class="stat-card">
+
+        <div class="stat-head">
+
+          <div class="stat-icon">
+            ✅
+          </div>
+
+        </div>
+
+
+        <span>
+          نسبة الإكمال
+        </span>
+
+
+        <strong id="completionRate">
+          0%
+        </strong>
+
+
+        <small>
+          من جميع الإجابات الممكنة
+        </small>
+
+      </article>
+
+
+
+      <article class="stat-card">
+
+        <div class="stat-head">
+
+          <div class="stat-icon">
+            💬
+          </div>
+
+        </div>
+
+
+        <span>
+          إجمالي الإجابات
+        </span>
+
+
+        <strong id="totalAnswers">
+          0
+        </strong>
+
+
+        <small>
+          إجابة فعلية
+        </small>
+
+      </article>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         الملخص
+    =========================================== -->
+
+    <section class="analytics-summary">
+
+
+      <div class="summary-message">
+
+        <div class="summary-icon">
+          ⚡
+        </div>
+
+        <span id="summaryMessage">
+          النتائج تتحدث تلقائيًا عند وصول المشاركات.
+        </span>
+
+      </div>
+
+
+      <div
+        id="lastUpdate"
+        class="last-update"
+      >
+        آخر تحديث: —
+      </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         النتائج
+    =========================================== -->
+
+    <section class="results-panel">
+
+
+      <div class="panel-header">
+
+
+        <div class="panel-title">
+
+          <h2>
+            تفاصيل الأسئلة
+          </h2>
+
+          <p>
+            توزيع الإجابات والنسب لكل سؤال
+          </p>
+
+        </div>
+
+
+        <span
+          id="responsesBadge"
+          class="responses-badge"
+        >
+          0 مشاركة
+        </span>
+
+
+      </div>
+
+
+
+      <div id="resultsContainer">
+
+
+        <div class="state-card">
+
+          <div class="state-icon">
+            ⏳
+          </div>
+
+          <h3>
+            جاري تحليل النتائج
+          </h3>
+
+          <p>
+            يتم الآن قراءة المشاركات من Firebase.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- ==========================================
+       Toast
+  =========================================== -->
+
+  <div id="toast"></div>
+
+
+
+  <!-- ==========================================
+       مكتبة Excel
+  =========================================== -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
+  ></script>
+
+
+
+  <!-- ==========================================
+       JavaScript
+  =========================================== -->
+
+  <script
+    type="module"
+    src="results.js"
+  ></script>
+
+
+</body>
+
+</html>

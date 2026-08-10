@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#6366f1"
+  >
+
+  <meta
+    name="description"
+    content="المشاركة في الاستبانة"
+  >
+
+  <title>
+    الاستبانة | منصة الاستبانات
+  </title>
+
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body {
+
+      min-height: 100vh;
+
+      font-family:
+        "Cairo",
+        sans-serif;
+
+      color: #292a3d;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f8f8ff,
+          #f4f5ff,
+          #faf5ff
+        );
+
+      overflow-x: hidden;
+
+    }
+
+
+    button,
+    input,
+    textarea {
+
+      font-family:
+        "Cairo",
+        sans-serif;
+
+    }
+
+
+    /* ==========================================
+       الخلفية
+    ========================================== */
+
+    .background {
+
+      position: fixed;
+
+      inset: 0;
+
+      overflow: hidden;
+
+      z-index: -1;
+
+      pointer-events: none;
+
+    }
+
+
+    .blob {
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      filter: blur(110px);
+
+      opacity: 0.18;
+
+    }
+
+
+    .blob-one {
+
+      width: 450px;
+      height: 450px;
+
+      top: -180px;
+      right: -100px;
+
+      background: #8b5cf6;
+
+    }
+
+
+    .blob-two {
+
+      width: 500px;
+      height: 500px;
+
+      bottom: -220px;
+      left: -180px;
+
+      background: #60a5fa;
+
+    }
+
+
+    .blob-three {
+
+      width: 330px;
+      height: 330px;
+
+      top: 42%;
+      right: 35%;
+
+      background: #ec4899;
+
+      opacity: 0.12;
+
+    }
+
+
+    /* ==========================================
+       الصفحة
+    ========================================== */
+
+    .survey-page {
+
+      width:
+        min(
+          850px,
+          calc(100% - 24px)
+        );
+
+      margin: auto;
+
+      padding:
+        28px
+        0
+        50px;
+
+    }
+
+
+    /* ==========================================
+       الرأس
+    ========================================== */
+
+    .survey-top {
+
+      text-align: center;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .platform-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        6px
+        13px;
+
+      border-radius: 100px;
+
+      background: #ede9fe;
+
+      color: #6457e7;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .survey-top h1 {
+
+      font-size:
+        clamp(
+          26px,
+          5vw,
+          38px
+        );
+
+      font-weight: 900;
+
+      color: #2c2d42;
+
+    }
+
+
+    .survey-top p {
+
+      margin-top: 5px;
+
+      color: #9295a8;
+
+      font-size: 11px;
+
+    }
+
+
+    /* ==========================================
+       بطاقة الاستبانة
+    ========================================== */
+
+    .survey-card {
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.95
+        );
+
+      border:
+        1px solid
+        rgba(
+          235,
+          235,
+          244,
+          0.95
+        );
+
+      border-radius: 24px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0
+        15px
+        42px
+        rgba(
+          55,
+          55,
+          90,
+          0.08
+        );
+
+    }
+
+
+    .survey-hero {
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding:
+        28px
+        28px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+    }
+
+
+    .survey-hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 210px;
+      height: 210px;
+
+      border-radius: 50%;
+
+      top: -110px;
+      left: -80px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.10
+        );
+
+    }
+
+
+    .survey-hero-content {
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+
+    .hero-badge {
+
+      display: inline-block;
+
+      margin-bottom: 8px;
+
+      padding:
+        4px
+        9px;
+
+      border-radius: 100px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.15
+        );
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+    }
+
+
+    #surveyTitle {
+
+      font-size:
+        clamp(
+          21px,
+          4vw,
+          29px
+        );
+
+      font-weight: 900;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    #surveyDescription {
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.85
+        );
+
+      font-size: 10px;
+
+      line-height: 1.9;
+
+    }
+
+
+    /* ==========================================
+       نسبة الإنجاز
+    ========================================== */
+
+    .progress-section {
+
+      padding:
+        17px
+        22px;
+
+      border-bottom:
+        1px solid
+        #eeeeF5;
+
+      background: #fbfbfe;
+
+    }
+
+
+    .progress-top {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .progress-label {
+
+      color: #737587;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+    }
+
+
+    #progressPercent {
+
+      color: #5d4fe3;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+    }
+
+
+    .progress-track {
+
+      height: 8px;
+
+      overflow: hidden;
+
+      border-radius: 100px;
+
+      background: #ecebf5;
+
+    }
+
+
+    #progressFill {
+
+      width: 0%;
+
+      height: 100%;
+
+      border-radius: inherit;
+
+      background:
+        linear-gradient(
+          90deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+      transition:
+        width
+        0.35s ease;
+
+    }
+
+
+    /* ==========================================
+       الأسئلة
+    ========================================== */
+
+    .questions-container {
+
+      padding:
+        22px;
+
+    }
+
+
+    .question-card {
+
+      border:
+        1px solid
+        #e9e9f2;
+
+      border-radius: 16px;
+
+      padding: 18px;
+
+      margin-bottom: 14px;
+
+      background: white;
+
+    }
+
+
+    .question-card:last-child {
+
+      margin-bottom: 0;
+
+    }
+
+
+    .question-title-row {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 10px;
+
+      margin-bottom: 13px;
+
+    }
+
+
+    .question-number {
+
+      width: 29px;
+      height: 29px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      border-radius: 9px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+    }
+
+
+    .question-title {
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      color: #404154;
+
+      line-height: 1.8;
+
+    }
+
+
+    .required-mark {
+
+      color: #e11d48;
+
+      margin-right: 3px;
+
+    }
+
+
+    .option-item {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      padding:
+        10px
+        11px;
+
+      margin-bottom: 7px;
+
+      border:
+        1px solid
+        #ececf3;
+
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+
+      color: #5d6072;
+
+      font-size: 10px;
+
+    }
+
+
+    .option-item:hover {
+
+      background: #faf9ff;
+
+      border-color: #d8d4fb;
+
+    }
+
+
+    .option-item input {
+
+      accent-color: #6366f1;
+
+    }
+
+
+    .text-input {
+
+      width: 100%;
+
+      border:
+        1.5px solid
+        #e6e6ef;
+
+      border-radius: 11px;
+
+      padding:
+        12px
+        13px;
+
+      outline: none;
+
+      font-size: 11px;
+
+      color: #4d4f61;
+
+      transition: 0.2s;
+
+    }
+
+
+    .text-input:focus {
+
+      border-color: #7064f5;
+
+      box-shadow:
+        0
+        0
+        0
+        4px
+        rgba(
+          112,
+          100,
+          245,
+          0.08
+        );
+
+    }
+
+
+    textarea.text-input {
+
+      min-height: 110px;
+
+      resize: vertical;
+
+    }
+
+
+    .rating-row {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+    }
+
+
+    .rating-option {
+
+      width: 44px;
+      height: 44px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border:
+        1px solid
+        #e4e4ee;
+
+      border-radius: 11px;
+
+      background: #fafaff;
+
+      cursor: pointer;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      color: #626477;
+
+    }
+
+
+    .rating-option:has(input:checked) {
+
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+      color: white;
+
+      border-color: transparent;
+
+    }
+
+
+    .rating-option input {
+
+      display: none;
+
+    }
+
+
+    /* ==========================================
+       زر الإرسال
+    ========================================== */
+
+    .submit-area {
+
+      padding:
+        0
+        22px
+        24px;
+
+    }
+
+
+    .submit-btn {
+
+      width: 100%;
+
+      border: none;
+
+      padding:
+        14px
+        18px;
+
+      border-radius: 12px;
+
+      color: white;
+
+      cursor: pointer;
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      background:
+        linear-gradient(
+          90deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+      box-shadow:
+        0
+        10px
+        22px
+        rgba(
+          99,
+          102,
+          241,
+          0.20
+        );
+
+    }
+
+
+    .submit-btn:disabled {
+
+      opacity: 0.65;
+
+      cursor: wait;
+
+    }
+
+
+    /* ==========================================
+       مغلقة
+    ========================================== */
+
+    .closed-screen {
+
+      display: none;
+
+      min-height: 590px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          0.96
+        );
+
+      border:
+        1px solid
+        rgba(
+          235,
+          235,
+          244,
+          0.95
+        );
+
+      border-radius: 28px;
+
+      padding:
+        55px
+        25px;
+
+      text-align: center;
+
+      box-shadow:
+        0
+        18px
+        50px
+        rgba(
+          55,
+          55,
+          90,
+          0.09
+        );
+
+      animation:
+        closedIn
+        0.55s ease;
+
+    }
+
+
+    .closed-screen.show {
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+    }
+
+
+    @keyframes closedIn {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(15px);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+
+      }
+
+    }
+
+
+    .closed-screen::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 330px;
+      height: 330px;
+
+      border-radius: 50%;
+
+      top: -160px;
+      right: -100px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(
+            139,
+            92,
+            246,
+            0.18
+          ),
+          transparent
+        );
+
+    }
+
+
+    .closed-screen::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 280px;
+      height: 280px;
+
+      border-radius: 50%;
+
+      bottom: -150px;
+      left: -110px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(
+            96,
+            165,
+            250,
+            0.15
+          ),
+          transparent
+        );
+
+    }
+
+
+    .closed-content {
+
+      position: relative;
+
+      z-index: 2;
+
+      width:
+        min(
+          100%,
+          560px
+        );
+
+    }
+
+
+    .closed-icon-wrap {
+
+      position: relative;
+
+      width: 105px;
+      height: 105px;
+
+      margin:
+        0 auto
+        22px;
+
+    }
+
+
+    .closed-icon-halo {
+
+      position: absolute;
+
+      inset: -13px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(
+          99,
+          102,
+          241,
+          0.08
+        );
+
+      animation:
+        closedPulse
+        2.4s ease-in-out
+        infinite;
+
+    }
+
+
+    @keyframes closedPulse {
+
+      50% {
+
+        transform:
+          scale(1.08);
+
+        opacity: 0.5;
+
+      }
+
+    }
+
+
+    .closed-icon {
+
+      position: relative;
+
+      z-index: 2;
+
+      width: 105px;
+      height: 105px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      border-radius: 31px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+      color: white;
+
+      font-size: 45px;
+
+      box-shadow:
+        0
+        16px
+        35px
+        rgba(
+          99,
+          102,
+          241,
+          0.25
+        );
+
+    }
+
+
+    .closed-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      padding:
+        6px
+        12px;
+
+      border-radius: 100px;
+
+      background: #fff1f2;
+
+      color: #be123c;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .closed-screen h2 {
+
+      font-size:
+        clamp(
+          27px,
+          5vw,
+          40px
+        );
+
+      color: #4538b8;
+
+      font-weight: 900;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .closed-survey-title {
+
+      color: #35364b;
+
+      font-size: 15px;
+
+      font-weight: 900;
+
+      margin-bottom: 13px;
+
+    }
+
+
+    .closed-description {
+
+      width:
+        min(
+          100%,
+          490px
+        );
+
+      margin:
+        0 auto
+        20px;
+
+      color: #77798c;
+
+      font-size: 11px;
+
+      line-height: 2;
+
+    }
+
+
+    .closed-thanks {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        10px
+        16px;
+
+      margin-bottom: 22px;
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #faf7ff,
+          #f3f2ff
+        );
+
+      border:
+        1px solid
+        #e5e1ff;
+
+      color: #59556f;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+    }
+
+
+    .home-btn {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      min-width: 190px;
+
+      padding:
+        12px
+        18px;
+
+      border: none;
+
+      border-radius: 12px;
+
+      text-decoration: none;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          90deg,
+          #6366f1,
+          #8b5cf6
+        );
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      box-shadow:
+        0
+        9px
+        20px
+        rgba(
+          99,
+          102,
+          241,
+          0.20
+        );
+
+    }
+
+
+    /* ==========================================
+       نجاح الإرسال
+    ========================================== */
+
+    .success-screen {
+
+      display: none;
+
+      padding:
+        60px
+        25px;
+
+      text-align: center;
+
+      background: white;
+
+      border-radius: 24px;
+
+      box-shadow:
+        0
+        15px
+        40px
+        rgba(
+          55,
+          55,
+          90,
+          0.08
+        );
+
+    }
+
+
+    .success-screen.show {
+
+      display: block;
+
+    }
+
+
+    .success-icon {
+
+      width: 85px;
+      height: 85px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      margin:
+        0 auto
+        17px;
+
+      border-radius: 27px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #10b981,
+          #34d399
+        );
+
+      color: white;
+
+      font-size: 38px;
+
+    }
+
+
+    .success-screen h2 {
+
+      color: #047857;
+
+      font-size: 25px;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .success-screen p {
+
+      color: #858798;
+
+      font-size: 11px;
+
+      margin-bottom: 18px;
+
+    }
+
+
+    /* ==========================================
+       Loading / error
+    ========================================== */
+
+    .state-card {
+
+      padding:
+        60px
+        25px;
+
+      text-align: center;
+
+      border-radius: 24px;
+
+      background: white;
+
+      box-shadow:
+        0
+        15px
+        40px
+        rgba(
+          55,
+          55,
+          90,
+          0.07
+        );
+
+    }
+
+
+    .state-icon {
+
+      width: 72px;
+      height: 72px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      margin:
+        0 auto
+        14px;
+
+      border-radius: 22px;
+
+      background: #f0edff;
+
+      font-size: 30px;
+
+    }
+
+
+    .state-card h2 {
+
+      font-size: 20px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .state-card p {
+
+      color: #999bad;
+
+      font-size: 10px;
+
+    }
+
+
+    /* ==========================================
+       Toast
+    ========================================== */
+
+    #toast {
+
+      position: fixed;
+
+      bottom: 25px;
+      left: 50%;
+
+      transform:
+        translateX(-50%)
+        translateY(30px);
+
+      z-index: 6000;
+
+      background: #292a40;
+
+      color: white;
+
+      padding:
+        11px
+        18px;
+
+      border-radius: 11px;
+
+      font-size: 10px;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: 0.3s;
+
+    }
+
+
+    #toast.show {
+
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        translateY(0);
+
+    }
+
+
+    /* ==========================================
+       Responsive
+    ========================================== */
+
+    @media
+    (max-width: 600px) {
+
+      .survey-page {
+
+        padding-top: 16px;
+
+      }
+
+
+      .survey-hero {
+
+        padding:
+          24px
+          19px;
+
+      }
+
+
+      .questions-container {
+
+        padding: 15px;
+
+      }
+
+
+      .submit-area {
+
+        padding:
+          0
+          15px
+          18px;
+
+      }
+
+
+      .progress-section {
+
+        padding:
+          15px;
+
+      }
+
+
+      .closed-screen {
+
+        min-height: 520px;
+
+        padding:
+          40px
+          18px;
+
+      }
+
+
+      .closed-icon-wrap,
+      .closed-icon {
+
+        width: 88px;
+        height: 88px;
+
+      }
+
+
+      .closed-icon {
+
+        font-size: 37px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- الخلفية -->
+
+  <div
+    class="background"
+    aria-hidden="true"
+  >
+
+    <div class="blob blob-one"></div>
+
+    <div class="blob blob-two"></div>
+
+    <div class="blob blob-three"></div>
+
+  </div>
+
+
+
+  <main class="survey-page">
+
+
+    <!-- رأس الصفحة -->
+
+    <header class="survey-top">
+
+      <div class="platform-badge">
+        📊 منصة الاستبانات
+      </div>
+
+      <h1>
+        شاركنا رأيك
+      </h1>
+
+      <p>
+        رأيك يساهم في التطوير والتحسين
+      </p>
+
+    </header>
+
+
+
+    <!-- حالة التحميل -->
+
+    <div
+      id="loadingState"
+      class="state-card"
+    >
+
+      <div class="state-icon">
+        ⏳
+      </div>
+
+      <h2>
+        جاري تحميل الاستبانة
+      </h2>
+
+      <p>
+        لحظات قليلة...
+      </p>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         الاستبانة النشطة
+    =========================================== -->
+
+    <section
+      id="surveyCard"
+      class="survey-card"
+      hidden
+    >
+
+
+      <div class="survey-hero">
+
+        <div class="survey-hero-content">
+
+          <span class="hero-badge">
+            🟢 متاحة للمشاركة
+          </span>
+
+          <h2 id="surveyTitle">
+            عنوان الاستبانة
+          </h2>
+
+          <p id="surveyDescription"></p>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="progress-section">
+
+        <div class="progress-top">
+
+          <span class="progress-label">
+            نسبة الإنجاز
+          </span>
+
+          <span id="progressPercent">
+            0%
+          </span>
+
+        </div>
+
+
+        <div class="progress-track">
+
+          <div id="progressFill"></div>
+
+        </div>
+
+      </div>
+
+
+
+      <form id="surveyForm">
+
+
+        <div
+          id="questionsContainer"
+          class="questions-container"
+        ></div>
+
+
+        <div class="submit-area">
+
+          <button
+            id="submitBtn"
+            class="submit-btn"
+            type="submit"
+          >
+            ✅ إرسال المشاركة
+          </button>
+
+        </div>
+
+
+      </form>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         حالة الاستبانة المغلقة
+    =========================================== -->
+
+    <section
+      id="closedScreen"
+      class="closed-screen"
+    >
+
+      <div class="closed-content">
+
+
+        <div class="closed-icon-wrap">
+
+          <div
+            class="closed-icon-halo"
+            aria-hidden="true"
+          ></div>
+
+          <div class="closed-icon">
+            🔒
+          </div>
+
+        </div>
+
+
+        <div class="closed-badge">
+          🔴 الاستبانة مغلقة
+        </div>
+
+
+        <h2>
+          انتهى استقبال المشاركات
+        </h2>
+
+
+        <div
+          id="closedSurveyTitle"
+          class="closed-survey-title"
+        >
+          الاستبانة
+        </div>
+
+
+        <p class="closed-description">
+
+          شكرًا لاهتمامكم ومشاركتكم.
+          تم إغلاق هذه الاستبانة،
+          ولم يعد استقبال الردود متاحًا حاليًا.
+
+        </p>
+
+
+        <div class="closed-thanks">
+          💜 نقدّر وقتكم واهتمامكم
+        </div>
+
+
+        <br>
+
+
+        <a
+          href="index.html"
+          class="home-btn"
+        >
+          🏠 العودة إلى الصفحة الرئيسية
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         نجاح الإرسال
+    =========================================== -->
+
+    <section
+      id="successScreen"
+      class="success-screen"
+    >
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+
+      <h2>
+        شكرًا لمشاركتك
+      </h2>
+
+
+      <p>
+        تم استلام إجاباتك بنجاح.
+      </p>
+
+
+      <a
+        href="index.html"
+        class="home-btn"
+      >
+        🏠 العودة إلى الصفحة الرئيسية
+      </a>
+
+    </section>
+
+
+  </main>
+
+
+
+  <div id="toast"></div>
+
+
+
+  <script
+    type="module"
+    src="survey.js"
+  ></script>
+
+
+</body>
+
+</html>
